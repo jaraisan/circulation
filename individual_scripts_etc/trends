@@ -1,0 +1,48 @@
+*exec trends sobs spall time 1 59
+set t 1
+*
+define a0=ave(&0,t=&3,t=&4)
+define a1=ave(&1,t=&3,t=&4)
+define at=ave(&2,t=&3,t=&4)
+*
+define var&0=ave(pow(&0,2),t=&3,t=&4)
+define var&1=ave(pow(&1,2),t=&3,t=&4)
+define var&0&1=ave(pow(&0-&1,2),t=&3,t=&4)
+*
+define a0t=ave((&0-a0)*(&2-at),t=&3,t=&4)
+define a1t=ave((&1-a1)*(&2-at),t=&3,t=&4)
+*
+define att=ave(pow(&2-at,2),t=&3,t=&4)
+*
+* Trends
+*
+define b&0=a0t/att
+define b&1=a1t/att
+define b&0&1=b&0-b&1
+*
+define a&0=a0-b&0*at
+define a&1=a1-b&1*at
+define a&0&1=a&0-a&1
+*
+* Regression residuals
+*
+set t &3 &4
+define res&0=&0-a0-b&0*(&2-at)
+define res&1=&1-a1-b&1*(&2-at)
+define res&0&1=res&1-res&0
+*
+* Variance of residuals
+*
+set t 1
+*
+define dvar&0=ave(pow(res&0,2),t=&3,t=&4)
+define dvar&1=ave(pow(res&1,2),t=&3,t=&4)
+define dvar&0&1=ave(pow(res&0&1,2),t=&3,t=&4)
+define stdb&0=sqrt((&4-&3+1)/(&4-&3-1)*dvar&0)/sqrt((&4-&3+1)*att)
+define stdb&1=sqrt((&4-&3+1)/(&4-&3-1)*dvar&1)/sqrt((&4-&3+1)*att)
+define stdb&0&1=sqrt((&4-&3+1)/(&4-&3-1)*dvar&0&1)/sqrt((&4-&3+1)*att)
+*
+* Explained variance (the latter is for detrended time series)
+*
+evar&1=1-var&0&1/var&0
+edvar&1=1-dvar&0&1/dvar&0

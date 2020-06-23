@@ -1,0 +1,88 @@
+Data and tools related to the manuscript "Effect of atmospheric circulation on surface air temperature trends in years 1979-2018", submitted in January 2020.
+
+1. License
+----------
+
+These data and scripts are distributed for non-commercial use under the CC BY-NC license. See https:/creativecommons.org/licenses/ for further detail.
+
+
+2. Software needs
+-----------------
+
+GrADS (the Grid Analysis and Display System is; cola.gmu.edu/grads) is needed for running the provided scripts. The netcdf data described in point 4 below can be opened and inspected with various other software as well.
+
+
+3. Use of GrADS scripts
+-----------------------
+
+Open GrADS in portrait mode (grads -p)
+
+A) To produce a figure analogous to Fig. 4 in the article, but for the area (50-60N, 30-40E), give the command
+
+run T_trends_auto.gs Name_of_area 30 40 50 60 1
+
+B) To produce a figure analogous to Fig. S10 for the same area, give the command
+
+run T_series_auto.gs Name_of_area 30 40 50 60 1979 2018 1
+
+In both examples, the last argument (1) gives an index for the graphics output file. Depending on the version of GrADS, either a figure metafile (fig1) or a .svg graphics (fig1.svg) will be produced. Error messages related to unknown printing commands may occur but can be ignored.
+
+
+4. Contents of data files
+-------------------------
+
+A) T_anomalies_ERA5_1979-2018.nc
+
+Anomalies of monthly mean 2 m temperature in ERA5 relative to the mean for 1979-2018, in a 2.5 x 2.5 degree latitude-longitude grid. The month (1-12) is on the z axis and the year (1979-2018) on the time axis.
+
+B) T_anomalies_circ_1979-2018.nc
+
+As (A), but for the circulation-related temperature anomalies calculated with the trajectory-based regression 
+
+C) T_trends_CMIP5_42mod_1979-2018.nc
+
+Linear trends of monthly mean 2 m temperature in years 1979-2018 in 42 CMIP5 models, in degrees C per year, in a 2.5 x 2.5 degree latitude-longitude grid. Data for the "historical" simulations is used until 2005 and RCP4.5 from 2006. The month (1-12) is on the z axis. The 42 models are on the time axis in the following order, as also described in the data descriptor file T_trends_CMIP5_42mod_1979-2018.ctl:  
+
+1 ACCESS1_0_r1i1p1
+2 ACCESS1_3_r1i1p1
+3 BCC_CSM1_1_r1i1p1
+4 bcc-csm1-1-m_r1i1p1
+5 BNU_ESM_r1i1p1
+6 CanESM2_r1i1p1
+7 CCSM4_r1i1p1
+8 CESM1_BGC_r1i1p1
+9 CESM1_CAM5_r1i1p1
+10 CMCC_CM_r1i1p1
+11 CMCC_CMS_r1i1p1
+12 CNRM_CM5_r1i1p1
+13 CSIRO_Mk3_6_0_r1i1p1
+14 EC-EARTH_rcp45_r8i1p1
+15 FGOALS_g2_r1i1p1
+16 FIO_ESM_r1i1p1
+17 GFDL_CM3_r1i1p1
+18 GFDL_ESM2G_r1i1p1
+19 GFDL_ESM2M_r1i1p1
+20 GISS_E2_H_r1i1p1
+21 GISS-E2-H_r1i1p2
+22 GISS-E2-H_r1i1p3
+23 GISS-E2-H-CC_r1i1p1
+24 GISS_E2_R_r1i1p1
+25 GISS-E2-R_r1i1p2
+26 GISS-E2-R_r1i1p3
+27 GISS-E2-R-CC_r1i1p1
+28 HadGEM2_AO_r1i1p1
+29 HadGEM2_CC_r1i1p1
+30 HadGEM2-ES_r2i1p1
+31 INMCM4_r1i1p1
+32 IPSL_CM5A_LR_r1i1p1
+33 IPSL_CM5A_MR_r1i1p1
+34 IPSL_CM5B_LR_r1i1p1
+35 MIROC5_r1i1p1
+36 MIROC_ESM_r1i1p1
+37 MIROC_ESM_CHEM_r1i1p1
+38 MPI_ESM_LR_r1i1p1
+39 MPI_ESM_MR_r1i1p1
+40 MRI_CGCM3_r1i1p1
+41 NorESM1_M_r1i1p1
+42 NorESM1_ME_r1i1p1
+

@@ -1,0 +1,8 @@
+set gxout line
+set cmark &1
+set cthick &2
+set cstyle &3
+set ccolor &4
+set digsiz &5
+d &0
+
