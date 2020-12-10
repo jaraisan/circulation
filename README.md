@@ -1,5 +1,5 @@
 # circulation
-Data and GrADS scripts associated with "Effect of atmospheric circulation on surface air temperature trends in years 1979-2018"
+Data and GrADS scripts associated with "Effect of atmospheric circulation on surface air temperature trends in years 1979-2018". Forthcoming in Climate Dynamics.
 
 The README file, the scripts and the GrADS data descriptor files are in the file "circulation.zip". Unpacking this with "unzip circulation.zip" creates the directory "circulation" together with the individual files. All these individual files are also available separately in the folder "individual_scripts_etc".
 
